@@ -1,27 +1,9 @@
 #include "hardware.hpp"
 #include "pros/adi.hpp"
 
-/*
-// Subsystems
-- Drivetrain left  = 6, 7, 8
-- Drivetrain right = 1, 2, 3
-- Primary intake   = 5
-- Secondary intake = 4
-
-- Mogo      = A
-- Ladybrown = B
-
-// Sensors
-- IMU = 17
-- Vertical Encoder   = 18
-- Horizontal Encoder = 19
-- Optical Sensor     = 20
-- Radio              = 21
-*/
-
 // Motor groups
-pros::MotorGroup left_motors({-6, -7, -8}, pros::MotorGearset::blue); // left motors on ports 6, 7, 8
-pros::MotorGroup right_motors({1, 2, 3}, pros::MotorGearset::blue);   // right motors on ports 1, 2, 3
+pros::MotorGroup left_motors({-1, -2, -3,4,5,6}, pros::MotorGearset::blue);
+pros::MotorGroup right_motors({7, 8, 9,10,11,12}, pros::MotorGearset::blue);
 pros::Motor      primary_intake(50, pros::MotorGearset::blue);            // Primary Intake on port 5
 pros::Motor      secondary_intake(50, pros::MotorGearset::blue);          // Secondary Intake on port 4
 

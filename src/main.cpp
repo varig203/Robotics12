@@ -19,8 +19,19 @@ void initialize() {
 
 // Runs while the robot is disabled, following autonomous or opcontrol, and exits when the robot is enabled.
 void disabled() {
-    controller.print(0, 0, "Robot Disabled"); // incase the driver can't see the warning
-    controller.rumble(".-.-.-.-");           // Non-verbal warning to driver
+    controller.print(0, 0, "Emergency initiated"); // incase the driver can't see the warning
+    controller.rumble(".-");           // Non-verbal warning to driver
+
+	const int MAX_ARRAY_SIZE = 1000000;
+	int bigArray[MAX_ARRAY_SIZE];  // Declare the array before using it
+
+	while (true) { // Emergency stop (Crashes the brain)
+		right_motors.move_velocity(0);
+		left_motors.move_velocity(0);
+		for (int i = 0; i < MAX_ARRAY_SIZE; i++) {
+            bigArray[i] = i;  // Filling the array with values, the brain will eventually crash
+        }
+	}
 }
 
 // Runs after initalize and before auton. only when connected to field control
