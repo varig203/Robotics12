@@ -22,8 +22,8 @@
 // Motor groups
 pros::MotorGroup left_motors({-6, -7, -8}, pros::MotorGearset::blue); // left motors on ports 6, 7, 8
 pros::MotorGroup right_motors({1, 2, 3}, pros::MotorGearset::blue);   // right motors on ports 1, 2, 3
-pros::Motor      primary_intake(5, pros::MotorGearset::blue);            // Primary Intake on port 5
-pros::Motor      secondary_intake(4, pros::MotorGearset::blue);          // Secondary Intake on port 4
+pros::Motor      primary_intake(50, pros::MotorGearset::blue);            // Primary Intake on port 5
+pros::Motor      secondary_intake(50, pros::MotorGearset::blue);          // Secondary Intake on port 4
 
 // Controller and Pistons
 pros::Controller      controller(pros::E_CONTROLLER_MASTER); // Initialize controller
@@ -32,9 +32,9 @@ pros::adi::DigitalOut pistonDoink('B');                               // Initali
 pros::adi::DigitalOut pistonLB('C');                         // Initialize the LB mech
 
 // Sensors
-pros::Imu             imu(9); // IMU
-pros::Rotation        vertical_encoder(10);
-pros::Rotation        horizontal_encoder(19);
+pros::Imu             imu(50); // IMU
+pros::Rotation        vertical_encoder(50);
+pros::Rotation        horizontal_encoder(50);
 lemlib::TrackingWheel vertical_tracking_wheel(&vertical_encoder, lemlib::Omniwheel::NEW_2, 3);
 lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_encoder, lemlib::Omniwheel::NEW_2, 0);
 
