@@ -1,5 +1,5 @@
 #include "hardware.hpp"
-#include "pros/adi.hpp"
+#include "main.h"
 
 // Motor groups
 pros::MotorGroup left_motors({-1, -2, -3,4,5,6}, pros::MotorGearset::blue);
