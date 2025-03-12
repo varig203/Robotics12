@@ -25,7 +25,7 @@ void disabled() {
 	const int MAX_ARRAY_SIZE = 1000000;
 	int bigArray[MAX_ARRAY_SIZE];  // Declare the array before using it
 
-	while (true) { // Emergency stop (Crashes the brain)
+	while (true) { // Emergency stop 
 		right_motors.move_velocity(0);
 		left_motors.move_velocity(0);
 		left_motors.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -42,6 +42,7 @@ void autonomous() {} // not for comp
 
 // Runs the operator control code in its own task when the robot is enabled, stops if disabled or comms lost.
 void opcontrol() {
+	bool enable = false;
     // These just run the functions on seperate threads for async
     pros::Task chassisControl(chassis_fn);
 //    pros::Task solenoidControl(solenoidControl_fn);
@@ -51,7 +52,12 @@ void opcontrol() {
 	while (true) {
 		// Emergency stop mechanism
 		if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
-			disabled();
+			if (enable) {
+				disabled();
+				enable = !enable;
+			} else {
+				enable = !enable;
+			}
 		}
 		// Checking rpm of motors
 		if (right_motors.get_actual_velocity() == 600 || left_motors.get_actual_velocity() == 600) {
